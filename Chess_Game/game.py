@@ -4,7 +4,7 @@ class Game:
 
     def __init__(self,rows,columns):
         self.board = board.Board(rows, columns)
-        self.selected=None
+        self.selected=False
         self.turn = "white"
         self.valid_moves = []
         self.black_pieces_left = 16
@@ -30,17 +30,18 @@ class Game:
         else :
             self.turn = "white"
 
-    def select(self,row,column,selected=False):
+    def select(self,row,column):
         if self.selected:
-            move = self._move(row,column)
-
+            move = self._move(row, column)
             if not move:
                 self.selected = None
-                self.selected(row,column)
-            piece = self.board.get_piece(row,column)
+                self.select(row, column)
+        else :
+            piece = self.board.get_piece(row, column)
             if piece != 0 and self.turn == piece.color:
                 self.selected = piece
-                self.valid_moves = (row,column,self.board)
+                self.valid_moves = (row, column, self.board)
+
 
     def _move(self,row,column):
         piece = self.board.get_piece(row,column)

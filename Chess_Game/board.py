@@ -18,31 +18,31 @@ class Board:
         for row in range(self.row):
             for column in range(self.columns):
                 if row == 1:
-                    self.board[row][column] = pawn.Pawn("pawn", row, column, "black")
+                    self.board[row][column] = pawn.Pawn("pawn", row, column, "black").display()
                 if row == 6:
-                    self.board[row][column] = pawn.Pawn("pawn", row, column, "white")
+                    self.board[row][column] = pawn.Pawn("pawn", row, column, "white").display()
                 if row == 0:
                     if column == 0 or column == 7:
-                        self.board[row][column] = rook.Rook("rook", row, column, "black")
+                        self.board[row][column] = rook.Rook("rook", row, column, "black").display()
                     if column == 1 or column == 6:
-                        self.board[row][column] = knight.Knight("knight", row, column, "black")
+                        self.board[row][column] = knight.Knight("knight", row, column, "black").display()
                     if column == 2 or column == 5:
-                        self.board[row][column] = bishop.Bishop("bishop", row, column, "black")
+                        self.board[row][column] = bishop.Bishop("bishop", row, column, "black").display()
                     if column == 3:
-                        self.board[row][column] = queen.Queen("queen", row, column, "black")
+                        self.board[row][column] = queen.Queen("queen", row, column, "black").display()
                     if column == 4:
-                        self.board[row][column] = king.King("king", row, column, "black")
+                        self.board[row][column] = king.King("king", row, column, "black").display()
                 if row == 7:
                     if column == 0 or column == 7:
-                        self.board[row][column] = rook.Rook("rook", row, column, "white")
+                        self.board[row][column] = rook.Rook("rook", row, column, "white").display()
                     if column == 1 or column == 6:
-                        self.board[row][column] = knight.Knight("knight", row, column, "white")
+                        self.board[row][column] = knight.Knight("knight", row, column, "white").display()
                     if column == 2 or column == 5:
-                        self.board[row][column] = bishop.Bishop("bishop", row, column, "white")
+                        self.board[row][column] = bishop.Bishop("bishop", row, column, "white").display()
                     if column == 3:
-                        self.board[row][column] = queen.Queen("queen", row, column, "white")
+                        self.board[row][column] = queen.Queen("queen", row, column, "white").display()
                     if column == 4:
-                        self.board[row][column] = king.King("king", row, column, "white")
+                        self.board[row][column] = king.King("king", row, column, "white").display()
 
     def get_piece(self,row,column):
         return self.board[row][column]
