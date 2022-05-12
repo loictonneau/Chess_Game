@@ -15,17 +15,17 @@ class Pawn(pieces.Piece):
                 if board[row-1][column] == 0: #verifie qu'il n'y a pas de piece a la case inidquer
                     self.availables_moves.append((row - 1, column))
                     if self.first_move:
-                        if board[row-2][column] == 0:
+                        if board[row-2][column] == " ":
                             self.availables_moves.append((row - 2, column))
 
                 if column-1 >=0:
-                    if board[row-1][column-1] != 0:
+                    if board[row-1][column-1] != " ":
                         piece = board[row-1][column-1]
                         if piece.color != self.color:
                             self.availables_moves.append((row - 1, column - 1))
 
-                if column+1 >=len(board[0]):
-                    if board[row - 1][column + 1] != 0:
+                if column+1 >len(board[0]):
+                    if board[row - 1][column + 1] != " ":
                         piece = board[row-1][column+1]
                         if piece.color != self.color:
                             self.availables_moves.append((row - 1, column + 1))
@@ -34,21 +34,21 @@ class Pawn(pieces.Piece):
 
             if row+1<len(board):
 
-                if board[row+1][column] == 0:
+                if board[row+1][column] == " ":
                     self.availables_moves.append((row + 1, column))
 
                     if self.first_move:
-                        if board[row+2][column] == 0:
+                        if board[row+2][column] == " ":
                             self.availables_moves.append((row + 2, column))
 
                 if column-1 >=0:
-                    if board[row+1][column-1] != 0:
+                    if board[row+1][column-1] != " ":
                         piece = board[row+1][column-1]
                         if piece.color != self.color:
                             self.availables_moves.append((row + 1, column - 1))
 
-                if column+1 >=len(board[0]):
-                    if board[row + 1][column + 1] != 0:
+                if column+1 >len(board[0]):
+                    if board[row + 1][column + 1] != " ":
                         piece = board[row+1][column+1]
                         if piece.color != self.color:
                             self.availables_moves.append((row + 1, column + 1))

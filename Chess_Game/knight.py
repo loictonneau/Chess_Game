@@ -9,7 +9,7 @@ class Knight(pieces.Piece):
         self.clear_available_move()
 
         if row-2 >=0 and column+1 < len(board):
-            if board[row-2][column+1] == 0:
+            if board[row-2][column+1] == " ":
                 self.availables_moves.append((row - 2, column + 1))
             else:
                 piece = board[row-2][column+1]
@@ -17,7 +17,7 @@ class Knight(pieces.Piece):
                     self.availables_moves.append((row - 2, column + 1))
 
         if row-2 >=0 and column-1 >=0:
-            if board[row-2][column-1] == 0:
+            if board[row-2][column-1] == " ":
                 self.availables_moves.append((row - 2, column - 1))
             else:
                 piece = board[row-2][column-1]
@@ -25,7 +25,7 @@ class Knight(pieces.Piece):
                     self.availables_moves.append((row - 2, column - 1))
 
         if row+2 < len(board[0]) and column+1 < len(board):
-            if board[row+2][column+1] == 0:
+            if board[row+2][column+1] == " ":
                 self.availables_moves.append((row + 2, column + 1))
             else:
                 piece = board[row+2][column+1]
@@ -33,7 +33,7 @@ class Knight(pieces.Piece):
                     self.availables_moves.append((row + 2, column + 1))
 
         if row+2 < len(board[0]) and column-1 >=0:
-            if board[row+2][column-1] == 0:
+            if board[row+2][column-1] == " ":
                 self.availables_moves.append((row + 2, column - 1))
             else:
                 piece = board[row+2][column-1]
@@ -41,7 +41,7 @@ class Knight(pieces.Piece):
                     self.availables_moves.append((row + 2, column - 1))
 
         if row-1 >=0 and column+2 < len(board):
-            if board[row-1][column+2] == 0:
+            if board[row-1][column+2] == " ":
                 self.availables_moves.append((row - 1, column + 2))
             else:
                 piece = board[row-1][column+2]
@@ -49,7 +49,7 @@ class Knight(pieces.Piece):
                     self.availables_moves.append((row - 1, column + 2))
 
         if row-1 >=0 and column-2 >=0:
-            if board[row-1][column-2] == 0:
+            if board[row-1][column-2] == " ":
                 self.availables_moves.append((row - 1, column - 2))
             else:
                 piece = board[row-1][column-2]
@@ -57,7 +57,7 @@ class Knight(pieces.Piece):
                     self.availables_moves.append((row - 1, column - 2))
 
         if row+1 < len(board[0]) and column+2 < len(board):
-            if board[row+1][column+2] == 0:
+            if board[row+1][column+2] == " ":
                 self.availables_moves.append((row + 1, column + 2))
             else:
                 piece = board[row+1][column+2]
@@ -65,7 +65,7 @@ class Knight(pieces.Piece):
                     self.availables_moves.append((row + 2, column + 1))
 
         if row+1 < len(board[0]) and column-2 >=0:
-            if board[row+1][column-2] == 0:
+            if board[row+1][column-2] == " ":
                 self.availables_moves.append((row + 2, column - 1))
             else:
                 piece = board[row+1][column-2]

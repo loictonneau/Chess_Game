@@ -38,7 +38,7 @@ class Game:
                 self.select(row, column)
         else :
             piece = self.board.get_piece(row, column)
-            if piece != 0 and self.turn == piece.color:
+            if piece != " " and self.turn == piece.color:
                 self.selected = piece
                 self.valid_moves = (row, column, self.board)
                 return piece
@@ -47,7 +47,7 @@ class Game:
     def _move(self,row,column):
         piece = self.board.get_piece(row,column)
         if self.selected and (row,column) in self.valid_moves:
-            if piece == 0 or piece != self.selected.color:
+            if piece == " " or piece != self.selected.color:
                 if self.simulate_move(self.selected,row,column):
                     self.remove(self.selected,row,column)
                     self.board.move(piece,row,column)
@@ -82,8 +82,8 @@ class Game:
     def simulate_move(self, piece, row, column):
         piece_row, piece_colomn = piece.row, piece.column
         save_piece = self.board.board[row][column]
-        if self.board.board[row][column] != 0:
-            self.board.board[row][column] = 0
+        if self.board.board[row][column] != " ":
+            self.board.board[row][column] = " "
         self.board.board[piece_row][piece_colomn], self.board.board[row][column] = self.board.board[row][column], \
                                                                                    self.board.board[piece_row][
                                                                                        piece_colomn]
@@ -102,7 +102,7 @@ class Game:
         enemies_moves = []
         for row in range(len(board)):
             for column in range (len(board[row])):
-                if board[row][column]!= 0 :
+                if board[row][column]!= " " :
                     if board[row][column].color !=piece.color:
                         move = board[row][column].get_available_moves(row,column,board)
                         for moves in move:
@@ -112,8 +112,8 @@ class Game:
     def get_king_pos(self,board):
         for row in range(len(board[0])):
             for column in range (len(board)):
-                if board[row][column] != 0:
-                    if board[row][column].type == "king" and board[row][column].color == self.turn:
+                if board[row][column] != " ":
+                    if self.board.board[row][column] == "king" and board[row][column].color == self.turn:
                         return(row,column)
 
 
@@ -121,7 +121,7 @@ class Game:
         possible_move=[]
         for row in range(len(board.Board[0])):
             for column in range(len(board.Board)):
-                if board[row][column] != 0:
+                if board[row][column] != " ":
                     if board[row][column].color == self.turn and board[row][column].type != "king":
                         moves = board[row][column].get_availabes_moves(row,column,board)
                         for move in moves:
@@ -130,8 +130,8 @@ class Game:
 
 
     def remove(self,board,piece,row,column):
-        if piece !=0:
-            board[row][column] = 0
+        if piece !=" ":
+            board[row][column] = " "
             if piece.color == "white":
                 self.white_pieces_left -=1
             else:
@@ -140,5 +140,5 @@ class Game:
     def draw_available_move(self):
         if len(self.valid_moves) > 0:
             for pos in self.valid_moves:
-                self.board[self.row][self.column] == 0
+                self.board[self.row][self.column] == "0"
                 self.board.draw_board()
