@@ -12,9 +12,15 @@ class Game:
 
     def draw_board(self) :
         letters = ("A","B","C","D","E","F","G","H")
-        print("  [ 1 ,  2 ,  3 ,  4 ,  5 ,  6 ,  7 ,  8 ]")
-        for row in range(self.board.row):
-           print(letters[row],self.board.board[row])
+        print("  [1 2 3 4 5 6 7 8 ]")
+        for column in range(self.board.columns):
+            tmp = str(letters[column]) + " |"
+            for row in range(self.board.row):
+                if self.board.board[column][row] != " ":
+                    tmp = tmp + self.board.board[column][row].display() + " "
+                else:
+                    tmp = tmp + "  "
+            print(f"{tmp}|")
 
     def reset(self,rows,columns):
         self.board = board.Board(rows, columns)
