@@ -40,7 +40,7 @@ class Game:
             piece = self.board.get_piece(row, column)
             if piece != " " and self.turn == piece.color:
                 self.selected = piece
-                self.valid_moves = (row, column, self.board)
+                self.valid_moves = piece.get_available_moves(row,column,self.board.board)
                 print(self.valid_moves)
                 return piece
 

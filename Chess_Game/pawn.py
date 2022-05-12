@@ -12,7 +12,7 @@ class Pawn(pieces.Piece):
         if self.color == "white":
 
             if row-1>=0: #verifie que l'on est pas au bord du plateau
-                if board[row-1][column] == 0: #verifie qu'il n'y a pas de piece a la case inidquer
+                if board[row-1][column] == " ": #verifie qu'il n'y a pas de piece a la case inidquer
                     self.availables_moves.append((row - 1, column))
                     if self.first_move:
                         if board[row-2][column] == " ":

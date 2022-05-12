@@ -19,7 +19,7 @@ def main():
     choice_move = "f1"#input("selectionné sa destination")
     choice_move = get_postion(choice_move)
     game.Game._move(playing_board, choice_move[0], choice_move[1])
-    playing_board.draw_board()
+    #playing_board.draw_board()
 
 
 
