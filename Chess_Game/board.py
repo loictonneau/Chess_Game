@@ -48,8 +48,6 @@ class Board:
         return self.board[row][column]
 
     def move(self,piece,row,column):
-        #print(piece)
-        #print(row,column)
         self.board[piece.row][piece.column], self.board[row][column] = self.board[row][column],  self.board[piece.row][piece.column]
         if piece.type == "pawn":
             if piece.first_move:

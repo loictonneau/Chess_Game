@@ -38,7 +38,11 @@ class Game:
                 self.select(row, column)
         else :
             piece = self.board.get_piece(row, column)
-            if piece != " " and self.turn == piece.color:
+            if piece == " " :
+                return print("pas de piece a l'endroit choisie")
+            elif self.turn != piece.color:
+                    return print("cette piece ne vous appartient pas")
+            else:
                 self.selected = piece
                 self.valid_moves = piece.get_available_moves(row,column,self.board.board)
                 print(self.valid_moves)
@@ -59,14 +63,15 @@ class Game:
                 return False
             return False
 
+
     def checkmate(self,board):
-        king_pos = self.get_king_pos(board.Board)
+        king_pos = self.get_king_pos(board.board)
         get_king = board.get_piece(king_pos[0],king_pos[1])
-        king_available_moves =  set(get_king.get_availables_moves(king_pos[0], king_pos[1], board.Board))
-        enemies_moves_set = set(self.enemies_moves(get_king, board.Board))
+        king_available_moves = set(get_king.get_available_moves(king_pos[0],king_pos[1],self.board.board))
+        enemies_moves_set = set(self.enemies_moves(get_king, board.board))
         king_moves = king_available_moves - enemies_moves_set
         set1 = king_available_moves.intersection(enemies_moves_set)
-        possible_move_to_def = set1.intersection(self.possible_moves(board.Board))
+        possible_move_to_def = set1.intersection(self.possible_moves(board.board))
         if len(king_moves) == 0 and len(king_available_moves) !=0 and possible_move_to_def == 0:
             return True
         return False
@@ -112,17 +117,17 @@ class Game:
         for row in range(len(board[0])):
             for column in range (len(board)):
                 if board[row][column] != " ":
-                    if self.board.board[row][column] == "king" and board[row][column].color == self.turn:
+                    if self.board.board[row][column].type == "king" and board[row][column].color == self.turn:
                         return(row,column)
 
 
     def possible_moves(self, board):
         possible_move=[]
-        for row in range(len(board.board[0])):
-            for column in range(len(board.board)):
+        for row in range(len(self.board.board[0])):
+            for column in range(len(self.board.board)):
                 if board[row][column] != " ":
                     if board[row][column].color == self.turn and board[row][column].type != "king":
-                        moves = board[row][column].get_availabes_moves(row,column,board)
+                        moves = self.board.board[row][column].get_available_moves(row,column,board)
                         for move in moves:
                             possible_move.append(move)
             return possible_move
@@ -135,9 +140,3 @@ class Game:
                 self.white_pieces_left -=1
             else:
                 self.black_pieces_left-=1
-
-    def draw_available_move(self):
-        if len(self.valid_moves) > 0:
-            for pos in self.valid_moves:
-                self.board[self.row][self.column] == "0"
-                self.board.draw_board()

@@ -9,7 +9,7 @@ class Rook(pieces.Piece):
         self.clear_available_move()
 
         for row_down in range(row+1,len(board[0])):
-            if board[row_down][column] == 0:
+            if board[row_down][column] == " ":
                 self.availables_moves.append((row_down, column))
             else:
                 piece = board[row_down][column]
@@ -21,7 +21,7 @@ class Rook(pieces.Piece):
 
         for row_up in range(row-1,-1,-1):
 
-            if board[row_up][column] == 0:
+            if board[row_up][column] == " ":
                 self.availables_moves.append((row_up, column))
             else:
                 piece = board[row_up][column]
@@ -33,7 +33,7 @@ class Rook(pieces.Piece):
 
         for column_right in range(column+1,len(board)):
 
-            if board[row][column_right] == 0:
+            if board[row][column_right] == " ":
                 self.availables_moves.append((row, column_right))
             else:
                 piece = board[row][column_right]
@@ -45,7 +45,7 @@ class Rook(pieces.Piece):
 
         for column_left in range(column - 1, -1, -1):
 
-            if board[row][column_left] == 0:
+            if board[row][column_left] == " ":
                 self.availables_moves.append((row, column_left))
             else:
                 piece = board[row][column_left]

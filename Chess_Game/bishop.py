@@ -11,7 +11,7 @@ class Bishop(pieces.Piece):
         row_i = row+1
         column_i = column+1
         while row_i <len(board[0]) and column_i<len(board):
-            if board[row_i][column_i] == 0:
+            if board[row_i][column_i] == " ":
                 self.availables_moves.append((row_i, column_i))
                 row_i+=1
                 column_i+=1
@@ -26,7 +26,7 @@ class Bishop(pieces.Piece):
         row_i = row - 1
         column_i = column - 1
         while row_i >=0 and column_i >=0:
-            if board[row_i][column_i] == 0:
+            if board[row_i][column_i] == " ":
                 self.availables_moves.append((row_i, column_i))
                 row_i -= 1
                 column_i -= 1
@@ -41,7 +41,7 @@ class Bishop(pieces.Piece):
         row_i = row + 1
         column_i = column - 1
         while row_i <len(board[0]) and column_i >=0:
-            if board[row_i][column_i] == 0:
+            if board[row_i][column_i] == " ":
                 self.availables_moves.append((row_i, column_i))
                 row_i += 1
                 column_i -= 1
@@ -56,7 +56,7 @@ class Bishop(pieces.Piece):
         row_i = row - 1
         column_i = column + 1
         while row_i >=0 and column_i < len(board):
-            if board[row_i][column_i] == 0:
+            if board[row_i][column_i] == " ":
                 self.availables_moves.append((row_i, column_i))
                 row_i -= 1
                 column_i += 1
