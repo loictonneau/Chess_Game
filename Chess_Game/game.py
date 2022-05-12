@@ -4,7 +4,7 @@ class Game:
 
     def __init__(self,rows,columns):
         self.board = board.Board(rows, columns)
-        self.selected=False
+        self.selected=None
         self.turn = "white"
         self.valid_moves = []
         self.black_pieces_left = 16
@@ -51,8 +51,7 @@ class Game:
             if piece == " " or piece != self.selected.color:
                 if self.simulate_move(self.selected,row,column):
                     self.board.move(self.selected,row,column)
-                    self.remove(self.selected,row,column)
-                    self.board.move(piece,row,column)
+                    self.remove(self.board.board,piece,row,column)
                     self.change_turn()
                     self.valid_moves=[]
                     self.selected= None
