@@ -41,14 +41,16 @@ class Game:
             if piece != " " and self.turn == piece.color:
                 self.selected = piece
                 self.valid_moves = (row, column, self.board)
+                print(self.valid_moves)
                 return piece
 
 
     def _move(self,row,column):
-        piece = self.board.get_piece(row,column)
+        piece = self.board.get_piece(row, column)
         if self.selected and (row,column) in self.valid_moves:
             if piece == " " or piece != self.selected.color:
                 if self.simulate_move(self.selected,row,column):
+                    self.board.move(self.selected,row,column)
                     self.remove(self.selected,row,column)
                     self.board.move(piece,row,column)
                     self.change_turn()
@@ -84,9 +86,7 @@ class Game:
         save_piece = self.board.board[row][column]
         if self.board.board[row][column] != " ":
             self.board.board[row][column] = " "
-        self.board.board[piece_row][piece_colomn], self.board.board[row][column] = self.board.board[row][column], \
-                                                                                   self.board.board[piece_row][
-                                                                                       piece_colomn]
+        self.board.board[piece_row][piece_colomn], self.board.board[row][column] = self.board.board[row][column], self.board.board[piece_row][piece_colomn]
         king_pos = self.get_king_pos(self.board.board)
         if king_pos is self.enemies_moves(piece, self.board.board):
             piece.row, piece.column = piece_row, piece_colomn
@@ -119,8 +119,8 @@ class Game:
 
     def possible_moves(self, board):
         possible_move=[]
-        for row in range(len(board.Board[0])):
-            for column in range(len(board.Board)):
+        for row in range(len(board.board[0])):
+            for column in range(len(board.board)):
                 if board[row][column] != " ":
                     if board[row][column].color == self.turn and board[row][column].type != "king":
                         moves = board[row][column].get_availabes_moves(row,column,board)
