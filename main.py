@@ -16,7 +16,6 @@ def main():
     choice_piece = "g1"  # input("selectioné une pièce")
     choice_piece = get_postion(choice_piece)
     choice_piece = game.Game.select(playing_board,choice_piece[0],choice_piece[1])
-
     choice_move = "f1"  # input("selectionné sa destination")
     choice_move_ = get_postion(choice_move)
     game.Game.simulate_move(playing_board,choice_piece, choice_move_[0], choice_move_[1])
