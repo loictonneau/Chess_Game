@@ -79,22 +79,23 @@ class Game:
                 print("White wins")
                 return True
 
-
-    def simulate_move(self,piece,row,column):
+    def simulate_move(self, piece, row, column):
         piece_row, piece_colomn = piece.row, piece.column
-        save_piece = self.Board.Board[row][column]
-        if self.Board.Board[row][column] != 0:
-            self.Board.Board[row][column] = 0
-        self.Board.Board[piece_row][piece_colomn],self.Board.Board[row][column] = self.Board.Board[row][column],self.Board.Board[piece_row][piece_colomn]
-        king_pos = self.get_king_pos(self.Board.Board)
-        if king_pos is self.enemies_moves(piece,self.Board.Board):
-            piece.row,piece.column = piece_row,piece_colomn
-            self.Board.Board[piece_row][piece_colomn] = piece
-            self.Board.Board[row][column] = save_piece
+        save_piece = self.board.board[row][column]
+        if self.board.board[row][column] != 0:
+            self.board.board[row][column] = 0
+        self.board.board[piece_row][piece_colomn], self.board.board[row][column] = self.board.board[row][column], \
+                                                                                   self.board.board[piece_row][
+                                                                                       piece_colomn]
+        king_pos = self.get_king_pos(self.board.board)
+        if king_pos is self.enemies_moves(piece, self.board.board):
+            piece.row, piece.column = piece_row, piece_colomn
+            self.board.board[piece_row][piece_colomn] = piece
+            self.board.board[row][column] = save_piece
             return False
-        piece.row,piece_colomn = piece_row, piece_colomn
-        self.Board.Board[piece_row][piece_colomn] = piece
-        self.Board.Board[row][column] = save_piece
+        piece.row, piece_colomn = piece_row, piece_colomn
+        self.board.board[piece_row][piece_colomn] = piece
+        self.board.board[row][column] = save_piece
         return True
 
     def enemies_moves(self,piece,board):
